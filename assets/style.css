@@ -1,7 +1,20 @@
-#question {
-    display: block;
+main {
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto ;
+    border: 1px solid red;
+    height: 100vh;
+    font-size: 24px;
+    
 }
 
+
+#welcome {
+    display: block;
+    text-align: center;
+}
+
+#question {
+    display: none;
+    text-align: center;
+}

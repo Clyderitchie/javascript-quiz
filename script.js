@@ -27,10 +27,8 @@
 // }
 
 
-var currentQuestionIndex = 0;
-// Start button
-var startButton = document.querySelector('button');
-startButton.addEventListener('click', showNextQuestion);
+
+
 
 // Stores all questions, choices, and correct answers 
 var questions = [
@@ -68,10 +66,16 @@ var questions = [
     },
 ];
 
+var currentQuestionIndex = 0;
+
+// Start button
+var startButton = document.querySelector('button');
+startButton.addEventListener('click', showNextQuestion);
+
 // Showing questions
 function showNextQuestion () {
-    var questionList = document.querySelector('#questions ol');
-    questionList.innerHTML = '';
+    var questionList = document.querySelector('#question ol');
+    questionList.innerHTML = ' ';
 
     var questionItem = document.createElement('li');
     questionItem.textContent = questions[currentQuestionIndex];
@@ -80,6 +84,20 @@ function showNextQuestion () {
 
     currentQuestionIndex++;
 
+    if (currentQuestionIndex === questions[0]){
+        questionItem.style.display = 'block';
+    } else if (currentQuestionIndex === questions[1]) {
+        questionItem.style.accentColor.display = 'block';
+    } else if (currentQuestionIndex === questions[2]) {
+        questionItem.style.accentColor.display = 'block';
+    } else if (currentQuestionIndex === questions[3]) {
+        questionItem.style.accentColor.display = 'block';
+    } else if (currentQuestionIndex === questions[4]) {
+        questionItem.style.accentColor.display = 'block';
+    } else {
+        questionItem.style.display = 'none';
+    }
+    
     if (currentQuestionIndex === questions.length) {
         console.log('hello');
     }
