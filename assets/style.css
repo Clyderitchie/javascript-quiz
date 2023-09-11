@@ -18,3 +18,17 @@ main {
     display: none;
     text-align: center;
 }
+
+#question ol {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #question li {
+    display: none;
+    margin-bottom: 10px;
+  }
+  
+  #question li:first-child {
+    display: block;
+  }

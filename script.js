@@ -73,32 +73,34 @@ var startButton = document.querySelector('button');
 startButton.addEventListener('click', showNextQuestion);
 
 // Showing questions
-function showNextQuestion () {
+function showNextQuestion() {
     var questionList = document.querySelector('#question ol');
     questionList.innerHTML = ' ';
 
     var questionItem = document.createElement('li');
-    questionItem.textContent = questions[currentQuestionIndex];
+    questionItem.textContent = questions[currentQuestionIndex].title;
 
     questionList.appendChild(questionItem);
 
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex === questions[0]){
+    if (currentQuestionIndex === 0) {
         questionItem.style.display = 'block';
-    } else if (currentQuestionIndex === questions[1]) {
-        questionItem.style.accentColor.display = 'block';
-    } else if (currentQuestionIndex === questions[2]) {
-        questionItem.style.accentColor.display = 'block';
-    } else if (currentQuestionIndex === questions[3]) {
-        questionItem.style.accentColor.display = 'block';
-    } else if (currentQuestionIndex === questions[4]) {
-        questionItem.style.accentColor.display = 'block';
+    } else if (currentQuestionIndex === 1) {
+        questionItem.style.display = 'block';
+    } else if (currentQuestionIndex === 2) {
+        questionItem.style.display = 'block';
+    } else if (currentQuestionIndex === 3) {
+        questionItem.style.display = 'block';
+    } else if (currentQuestionIndex === 4) {
+        questionItem.style.display = 'block';
     } else {
         questionItem.style.display = 'none';
     }
-    
-    if (currentQuestionIndex === questions.length) {
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex >= questions.length) {
         console.log('hello');
     }
 }
+
+showNextQuestion();
