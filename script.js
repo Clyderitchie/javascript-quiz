@@ -13,30 +13,24 @@
 //     }
 // });
 
-function showQuestions () {
-    var output = [];
-    var answer;
+// function showQuestions () {
+//     var output = [];
+//     var answer;
 
-    for (var i=0; i < questions.length; i++) {
-        answer = [];
+//     for (var i=0; i < questions.length; i++) {
+//         answer = [];
 
-        for (choices in questions[i].answer) {
-            
-        }
-    }
-}
+//         for (choices in questions[i].answer) {
 
-
+//         }
+//     }
+// }
 
 
-
-
-
-
-
-
-
-
+var currentQuestionIndex = 0;
+// Start button
+var startButton = document.querySelector('button');
+startButton.addEventListener('click', showNextQuestion);
 
 // Stores all questions, choices, and correct answers 
 var questions = [
@@ -74,3 +68,19 @@ var questions = [
     },
 ];
 
+// Showing questions
+function showNextQuestion () {
+    var questionList = document.querySelector('#questions ol');
+    questionList.innerHTML = '';
+
+    var questionItem = document.createElement('li');
+    questionItem.textContent = questions[currentQuestionIndex];
+
+    questionList.appendChild(questionItem);
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex === questions.length) {
+        console.log('hello');
+    }
+}
