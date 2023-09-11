@@ -82,25 +82,31 @@ function showNextQuestion() {
 
     questionList.appendChild(questionItem);
 
-    if (currentQuestionIndex === 0) {
-        questionItem.style.display = 'block';
-    } else if (currentQuestionIndex === 1) {
-        questionItem.style.display = 'block';
-    } else if (currentQuestionIndex === 2) {
-        questionItem.style.display = 'block';
-    } else if (currentQuestionIndex === 3) {
-        questionItem.style.display = 'block';
-    } else if (currentQuestionIndex === 4) {
-        questionItem.style.display = 'block';
-    } else {
-        questionItem.style.display = 'none';
+    var choices = questions[currentQuestionIndex].choices;
+    for (var i = 0; i < choices.length; i++) {
+        var choiceButton = document.createElement('button');
+        choiceButton.textContent = choices[i];
+        choiceButton.addEventListener('click', toggleDisplay);
+        questionList.appendChild(choiceButton);
     }
+
+    questionItem.style.display = 'block';
 
     currentQuestionIndex++;
 
     if (currentQuestionIndex >= questions.length) {
         console.log('hello');
     }
+    
+}
+
+function toggleDisplay(event) {
+    var buttons = document.querySelectorAll('#question button');
+    buttons.forEach(function(button) {
+        button.style.display = 'none';
+    });
+    
+    event.target.style.display = 'block';
 }
 
 showNextQuestion();
