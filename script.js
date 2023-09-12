@@ -1,4 +1,4 @@
-// Stores all questions, choices, and correct answers 
+// Global variables
 var questions = [
     {
         title: 'Commonly used data types DO NOT include:',
@@ -33,48 +33,112 @@ var questions = [
         answer: 'console.log',
     },
 ];
-
+var timeEl = document.querySelector('#timer-left');
+var startScreenEl = document.querySelector('#start-screen');
+var questionContainerEl = document.querySelector('#question-container');
+var startBtn = document.querySelector('#start-btn');
 var currentQuestionIndex = 0;
+var timeleft = 60;
+var intervalId;
+
+// Render currentQuestionIndex once the user clicks the start button
+startBtn.addEventListener('click', function (event) {
+    showQuestion();
+    //starting the timer
+    intervalId = setInterval(function() {
+        timeleft--;
+        timeEl.textContent = timeleft;
+    }, 100);
+    
+    if(timeleft === 0) {
+        clearInterval(intervalId);
+    }     
+});
+
+
+function showQuestion () {
+    
+    questionContainerEl.textContent = questions[currentQuestionIndex];
+    // currentQuestionIndex = questions[0].choices;
+    for (let i = 0; i < questions[0].choices.length; i++) {
+        var choiceBtn = document.createElement('button');
+        choiceBtn.textContent = questions[0].choices[i];
+        questionContainerEl.append(choiceBtn);
+        choiceBtn.addEventListener('click', function(event) {
+            if (event.target.textContent === questions[0].answer){
+                console.log('correct');
+            }
+            // console.log(event.target.textContent);
+        })
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Start button
-var startButton = document.querySelector('button');
-startButton.addEventListener('click', showNextQuestion);
+// var startButton = document.querySelector('button');
+// startButton.addEventListener('click', showNextQuestion);
 
-// Showing questions
-function showNextQuestion() {
-    var questionList = document.querySelector('#question ol');
-    questionList.innerHTML = ' ';
 
-    var questionItem = document.createElement('li');
-    questionItem.textContent = questions[currentQuestionIndex].title;
-
-    questionList.appendChild(questionItem);
-
-    var choices = questions[currentQuestionIndex].choices;
-    for (var i = 0; i < choices.length; i++) {
-        var choiceButton = document.createElement('button');
-        choiceButton.textContent = choices[i];
-        choiceButton.addEventListener('click', toggleDisplay);
-        questionList.appendChild(choiceButton);
-    }
-
-    questionItem.style.display = 'block';
-
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex >= questions.length) {
-        console.log('hello');
-    }
+// function toggleDisplay(event) {
+//     var buttons = document.querySelectorAll('#question button');
+//     buttons.forEach(function(button) {
+//         button.style.display = 'none';
+//     });
     
-}
+//     event.target.style.display = 'block';
+// }
 
-function toggleDisplay(event) {
-    var buttons = document.querySelectorAll('#question button');
-    buttons.forEach(function(button) {
-        button.style.display = 'none';
-    });
-    
-    event.target.style.display = 'block';
-}
-
-showNextQuestion();
+// showNextQuestion();
