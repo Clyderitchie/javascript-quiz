@@ -1,35 +1,3 @@
-// Global variables
-// var question = document.querySelector('#question');
-
-// toggle diplay between none and block for the questions
-// question.addEventListener('click', function(){
-//     var targetElement = document.querySelector('li');
-//     var displayValue = window.getComputedStyle(targetElement).getPropertyValue('display');
-
-//     if (displayValue === none) {
-//         targetElement.style.display = 'block';
-//     } else {
-//         targetElement.style.display = 'none';
-//     }
-// });
-
-// function showQuestions () {
-//     var output = [];
-//     var answer;
-
-//     for (var i=0; i < questions.length; i++) {
-//         answer = [];
-
-//         for (choices in questions[i].answer) {
-
-//         }
-//     }
-// }
-
-
-
-
-
 // Stores all questions, choices, and correct answers 
 var questions = [
     {
