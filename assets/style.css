@@ -10,12 +10,16 @@ main {
 
 
 #start-screen {
-    display: block;
+    /* display: block; */
     text-align: center;
 }
 
 #question-container {
-    display: none;
+    /* display: none; */
     text-align: center;
 }
 
+
+.hidden {
+    display: none;
+}
