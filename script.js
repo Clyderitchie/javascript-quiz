@@ -44,6 +44,12 @@ var intervalId;
 // Render currentQuestionIndex once the user clicks the start button
 startBtn.addEventListener('click', function (event) {
     showQuestion();
+    timer();
+    
+});
+
+// Timer function
+function timer () {
     //starting the timer
     intervalId = setInterval(function() {
         timeleft--;
@@ -53,99 +59,25 @@ startBtn.addEventListener('click', function (event) {
     if(timeleft === 0) {
         clearInterval(intervalId);
     }     
-});
+}
 
-
+// function to show current question and choices for that question
 function showQuestion () {
-    
     questionContainerEl.textContent = questions[currentQuestionIndex].title;
-    // currentQuestionIndex = questions[0].choices;
-    for (let i = 0; i < questions[0].choices.length; i++) {
+    for (let i = 0; i < questions[currentQuestionIndex].choices.length; i++) {
         var choiceBtn = document.createElement('button');
-        choiceBtn.textContent = questions[0].choices[i];
+        choiceBtn.textContent = questions[currentQuestionIndex].choices[i];
         questionContainerEl.append(choiceBtn);
         choiceBtn.addEventListener('click', function(event) {
             if (event.target.textContent === questions[currentQuestionIndex].answer){
-                // currentQuestionIndex++;
-                questionContainerEl.textContent = questions[currentQuestionIndex++].title;
                 console.log('correct');
             } else if (event.target.textContent != questions[currentQuestionIndex].answer){
-                // currentQuestionIndex++;
                 timeleft = timeleft - 15;
                 console.log('wrong answer');
             }
-            // console.log(event.target.textContent);
-            
+            currentQuestionIndex++;
+            showQuestion();
         })
     }
-    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Start button
-// var startButton = document.querySelector('button');
-// startButton.addEventListener('click', showNextQuestion);
-
-
-// function toggleDisplay(event) {
-//     var buttons = document.querySelectorAll('#question button');
-//     buttons.forEach(function(button) {
-//         button.style.display = 'none';
-//     });
-    
-//     event.target.style.display = 'block';
-// }
-
-// showNextQuestion();
