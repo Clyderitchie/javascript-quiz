@@ -48,7 +48,7 @@ startBtn.addEventListener('click', function (event) {
     intervalId = setInterval(function() {
         timeleft--;
         timeEl.textContent = timeleft;
-    }, 100);
+    }, 1000);
     
     if(timeleft === 0) {
         clearInterval(intervalId);
@@ -58,17 +58,24 @@ startBtn.addEventListener('click', function (event) {
 
 function showQuestion () {
     
-    questionContainerEl.textContent = questions[currentQuestionIndex];
+    questionContainerEl.textContent = questions[currentQuestionIndex].title;
     // currentQuestionIndex = questions[0].choices;
     for (let i = 0; i < questions[0].choices.length; i++) {
         var choiceBtn = document.createElement('button');
         choiceBtn.textContent = questions[0].choices[i];
         questionContainerEl.append(choiceBtn);
         choiceBtn.addEventListener('click', function(event) {
-            if (event.target.textContent === questions[0].answer){
+            if (event.target.textContent === questions[currentQuestionIndex].answer){
+                // currentQuestionIndex++;
+                questionContainerEl.textContent = questions[currentQuestionIndex++].title;
                 console.log('correct');
+            } else if (event.target.textContent != questions[currentQuestionIndex].answer){
+                // currentQuestionIndex++;
+                timeleft = timeleft - 15;
+                console.log('wrong answer');
             }
             // console.log(event.target.textContent);
+            
         })
     }
     
