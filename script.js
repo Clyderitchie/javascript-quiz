@@ -40,11 +40,13 @@ var startBtn = document.querySelector('#start-btn');
 var currentQuestionIndex = 0;
 var timeleft = 60;
 var intervalId;
+var score = 0;
 
 // Render currentQuestionIndex once the user clicks the start button
 startBtn.addEventListener('click', function() {
     showQuestion();
     timer();
+    displayEvent();
     
 });
 
@@ -71,8 +73,9 @@ function showQuestion () {
         choiceBtn.addEventListener('click', function(event) {
             if (event.target.textContent === questions[currentQuestionIndex].answer){
                 console.log('correct');
+                score++;
             } else if (event.target.textContent != questions[currentQuestionIndex].answer){
-                timeleft = timeleft - 15;
+                timeleft -= 15;
                 console.log('wrong answer');
             }
             currentQuestionIndex++;
@@ -83,5 +86,11 @@ function showQuestion () {
 
 // Sets displays to block or none depending on users actions
 function displayEvent() {
-    
+    if (questionContainerEl.style.display === 'none' && startScreenEl.style.display === 'block') {
+        questionContainerEl.style.display = 'block';
+        startScreenEl.style.display = 'none';
+    } else {
+        startScreenEl.style.display = 'block';
+        questionContainerEl.style.display = 'none';
+    }
 }
