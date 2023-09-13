@@ -42,7 +42,7 @@ var timeleft = 60;
 var intervalId;
 
 // Render currentQuestionIndex once the user clicks the start button
-startBtn.addEventListener('click', function (event) {
+startBtn.addEventListener('click', function() {
     showQuestion();
     timer();
     
@@ -81,3 +81,7 @@ function showQuestion () {
     }
 }
 
+// Sets displays to block or none depending on users actions
+function displayEvent() {
+    
+}
