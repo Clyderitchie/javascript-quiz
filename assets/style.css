@@ -19,7 +19,22 @@ main {
     text-align: center;
 }
 
+#question-container button{
+    display: block;
+    font-size: 22px;
+    margin: 1px 0;
+}
 
 .hidden {
     display: none;
+}
+
+
+/* Timer styling */
+header {
+    height: 75px;
+}
+
+header div {
+    padding: 2% 0;
 }

@@ -59,7 +59,7 @@ function timer() {
         if (timeleft <= 0) {
             clearInterval(intervalId);
         }
-    }, 10);
+    }, 1000);
 
    
 }
@@ -87,14 +87,6 @@ function showQuestion() {
 
 // Sets displays to block or none depending on users actions
 function displayEvent() {
-    // if (questionContainerEl.style.display === 'none' && startScreenEl.style.display === 'block') {
-    //     questionContainerEl.style.display = 'block';
-    //     startScreenEl.style.display = 'none';
-    // } else {
-    //     startScreenEl.style.display = 'block';
-    //     questionContainerEl.style.display = 'none';
-    // }
-
     if (questionContainerEl.classList[0] === 'hidden') {
         questionContainerEl.classList.remove('hidden');
         startScreenEl.classList.add('hidden');
