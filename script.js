@@ -47,6 +47,7 @@ startBtn.addEventListener('click', function () {
     showQuestion();
     timer();
     displayEvent();
+    
 
 });
 
@@ -78,10 +79,14 @@ function showQuestion() {
             } else if (event.target.textContent != questions[currentQuestionIndex].answer) {
                 timeleft -= 15;
                 console.log('wrong answer');
+            } else if (event.target.textContent > questions[currentQuestionIndex].title && event.target.textContent > questions[currentQuestionIndex].answer) {
+                console.log('Quiz is over, no more questions');
             }
             currentQuestionIndex++;
             showQuestion();
+            
         })
+       
     }
 }
 
@@ -94,6 +99,14 @@ function displayEvent() {
         questionContainerEl.classList.add('hidden');
         startScreenEl.classList.remove('hidden');
     }
-
     console.log(questionContainerEl.classList);
-}
+};
+
+// Function for when quiz is over
+// function quizOver () {
+//     if (questions[currentQuestionIndex].title > questions.length) {
+//         console.log('Quiz is over. no more questions.')
+//     }
+// }
+    
+// quizOver();

@@ -32,9 +32,13 @@ main {
 
 /* Timer styling */
 header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     height: 75px;
 }
 
 header div {
-    padding: 2% 0;
+    padding: 0 4%;
 }
