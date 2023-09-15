@@ -37,6 +37,8 @@ var timeEl = document.querySelector('#timer-left');
 var startScreenEl = document.querySelector('#start-screen');
 var questionContainerEl = document.querySelector('#question-container');
 var startBtn = document.querySelector('#start-btn');
+var highscoreBtnEl = document.querySelector('#highscore');
+var highscoreEl = document.querySelector('#highscore-container');
 var currentQuestionIndex = 0;
 var timeleft = 60;
 var intervalId;
@@ -65,6 +67,14 @@ function timer() {
    
 }
 
+// Function for the highscore to be stored in the highscore.html page
+function highscore (){
+    highscoreBtnEl.addEventListener('click', function(event){
+        window.alert(highscoreEl.textContent = localStorage.getItem(score));
+    })
+    
+}
+highscore();
 // function to show current question and choices for that question
 function showQuestion() {
     questionContainerEl.textContent = questions[currentQuestionIndex].title;
@@ -79,12 +89,13 @@ function showQuestion() {
             } else if (event.target.textContent != questions[currentQuestionIndex].answer) {
                 timeleft -= 15;
                 console.log('wrong answer');
-            } else if (event.target.textContent > questions[currentQuestionIndex].title && event.target.textContent > questions[currentQuestionIndex].answer) {
-                console.log('Quiz is over, no more questions');
-            }
+            } 
             currentQuestionIndex++;
-            showQuestion();
-            
+            if (currentQuestionIndex === questions.length) {
+                localStorage.setItem('score', score);
+            } else {
+                showQuestion();
+            }
         })
        
     }
