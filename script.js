@@ -68,13 +68,7 @@ function timer() {
 }
 
 // Function for the highscore to be stored in the highscore.html page
-function highscore (){
-    highscoreBtnEl.addEventListener('click', function(event){
-        window.alert(highscoreEl.textContent = localStorage.getItem(score));
-    })
-    
-}
-highscore();
+
 // function to show current question and choices for that question
 function showQuestion() {
     questionContainerEl.textContent = questions[currentQuestionIndex].title;
@@ -113,11 +107,33 @@ function displayEvent() {
     console.log(questionContainerEl.classList);
 };
 
-// Function for when quiz is over
-// function quizOver () {
-//     if (questions[currentQuestionIndex].title > questions.length) {
-//         console.log('Quiz is over. no more questions.')
-//     }
-// }
-    
-// quizOver();
+// Function for highscore list
+function addHighscore (score) {
+    var highscores = JSON.parse(localStorage.getItem('score')) || [];
+
+    var newHighscore = {
+        'score' : score
+    };
+
+    highscores.push(newHighscore);
+
+    highscores.sort (function (a, b) {
+        return b.score - a.score;
+    });
+
+    if (highscores.length > 5) {
+        highscores = highscores.slice(0, 5);
+    };
+
+    localStorage.setItem('highscore', JSON.stringify(highscores));
+
+    var highScoreList = document.querySelector('highscore');
+    highScoreList.innerHTML = ''; 
+    for (var i = 0; i < highScores.length; i++) {
+      var scoreItem = document.createElement('li');
+      scoreItem.textContent = highScores[i].score;
+      highScoreList.appendChild(scoreItem);
+    };
+};
+
+addHighscore(score);
