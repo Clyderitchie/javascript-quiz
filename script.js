@@ -87,11 +87,12 @@ function showQuestion() {
             currentQuestionIndex++;
             if (currentQuestionIndex === questions.length) {
                 localStorage.setItem('score', score);
+                addHighscore(score);
             } else {
                 showQuestion();
             }
         })
-       
+        
     }
 }
 
@@ -109,7 +110,7 @@ function displayEvent() {
 
 // Function for highscore list
 function addHighscore (score) {
-    var highscores = JSON.parse(localStorage.getItem('score')) || [];
+    var highscores = JSON.parse(localStorage.getItem('highscore')) || [];
 
     var newHighscore = {
         'score' : score
@@ -127,13 +128,22 @@ function addHighscore (score) {
 
     localStorage.setItem('highscore', JSON.stringify(highscores));
 
-    var highScoreList = document.querySelector('highscore');
-    highScoreList.innerHTML = ''; 
-    for (var i = 0; i < highScores.length; i++) {
+    var highScoreList = document.querySelector('#highscore-list');
+    highScoreList.innerHTML = ' '; 
+
+    for (var i = 0; i < highscores.length; i++) {
       var scoreItem = document.createElement('li');
-      scoreItem.textContent = highScores[i].score;
+      scoreItem.textContent = highscores[i].score;
       highScoreList.appendChild(scoreItem);
     };
+    highscoreEl.classList.remove('hidden');
 };
 
 addHighscore(score);
+
+
+// if (currentQuestionIndex === questions.length) {
+//     addHighscore(score);
+//   } else {
+//     showQuestion();
+//   }
