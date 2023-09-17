@@ -1,3 +1,4 @@
+/* Main body secetion */
 main {
     display: flex;
     justify-content: center;
@@ -8,15 +9,16 @@ main {
     
 }
 
-
+/* Start screen secetion */
 #start-screen {
-    /* display: block; */
+    border: 1px dashed blue;
     text-align: center;
 }
 
+/* question container section */
 #question-container {
-    /* display: none; */
     text-align: center;
+    border: 1px solid blue;
 }
 
 #question-container button{
@@ -29,7 +31,6 @@ main {
     display: none;
 }
 
-
 /* Timer styling */
 header {
     display: flex;
@@ -41,4 +42,18 @@ header {
 
 header div {
     padding: 0 4%;
+}
+
+
+#content-container {
+    flex-basis: 25%;
+    padding-bottom: 10.2%;
+    border: 1px dashed blue;
+}
+
+/* Highscore secetion */
+#highscore {
+    border: 1px sloid blue;
+    text-align: center;
+    flex-basis: 25%;
 }

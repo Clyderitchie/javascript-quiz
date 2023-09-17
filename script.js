@@ -37,8 +37,7 @@ var timeEl = document.querySelector('#timer-left');
 var startScreenEl = document.querySelector('#start-screen');
 var questionContainerEl = document.querySelector('#question-container');
 var startBtn = document.querySelector('#start-btn');
-var highscoreBtnEl = document.querySelector('#highscore');
-var highscoreEl = document.querySelector('#highscore-container');
+var highscoreEl = document.querySelector('#highscore');
 var currentQuestionIndex = 0;
 var timeleft = 60;
 var intervalId;
@@ -49,7 +48,7 @@ startBtn.addEventListener('click', function () {
     showQuestion();
     timer();
     displayEvent();
-    
+    // addHighscore(score);
 
 });
 
@@ -66,8 +65,6 @@ function timer() {
 
    
 }
-
-// Function for the highscore to be stored in the highscore.html page
 
 // function to show current question and choices for that question
 function showQuestion() {
@@ -87,7 +84,7 @@ function showQuestion() {
             currentQuestionIndex++;
             if (currentQuestionIndex === questions.length) {
                 localStorage.setItem('score', score);
-                addHighscore(score);
+                // addHighscore(score);
             } else {
                 showQuestion();
             }
@@ -113,7 +110,8 @@ function addHighscore (score) {
     var highscores = JSON.parse(localStorage.getItem('highscore')) || [];
 
     var newHighscore = {
-        'score' : score
+        'score' : score,
+        'name' : prompt('Enter your name: ')
     };
 
     highscores.push(newHighscore);
@@ -138,12 +136,4 @@ function addHighscore (score) {
     };
     highscoreEl.classList.remove('hidden');
 };
-
 addHighscore(score);
-
-
-// if (currentQuestionIndex === questions.length) {
-//     addHighscore(score);
-//   } else {
-//     showQuestion();
-//   }
