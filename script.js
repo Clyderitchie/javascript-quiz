@@ -63,7 +63,7 @@ function timer() {
         }
     }, 1000);
 
-   
+
 }
 
 // function to show current question and choices for that question
@@ -80,7 +80,7 @@ function showQuestion() {
             } else if (event.target.textContent != questions[currentQuestionIndex].answer) {
                 timeleft -= 15;
                 console.log('wrong answer');
-            } 
+            }
             currentQuestionIndex++;
             if (currentQuestionIndex === questions.length) {
                 localStorage.setItem('score', score);
@@ -89,9 +89,27 @@ function showQuestion() {
                 showQuestion();
             }
         })
-        
+
     }
 }
+
+// Function for new question
+// function nextQuestion () {
+//     choiceBtn.addEventListener('click', function(event) {
+//         if (event.target.textContent === questions[currentQuestionIndex].answer){
+//             score++;
+//             console.log('correct');
+//         } else if (event.target.textContent != questions[currentQuestionIndex].answer) {
+//             timeleft -= 15;
+//             console.log('wrong answer');
+//         } else if (currentQuestionIndex === questions.length) {
+//             localStorage.setItem('score', score);
+//         } else {
+//             nextQuestion();
+//         }
+//         currentQuestionIndex++;
+//     })
+// }
 
 // Sets displays to block or none depending on users actions
 function displayEvent() {
@@ -106,17 +124,17 @@ function displayEvent() {
 };
 
 // Function for highscore list
-function addHighscore (score) {
+function addHighscore(score) {
     var highscores = JSON.parse(localStorage.getItem('highscore')) || [];
 
     var newHighscore = {
-        'score' : score,
-        'name' : prompt('Enter your name: ')
+        'score': score,
+        'name': prompt('Enter your name: ')
     };
 
     highscores.push(newHighscore);
 
-    highscores.sort (function (a, b) {
+    highscores.sort(function (a, b) {
         return b.score - a.score;
     });
 
@@ -127,12 +145,12 @@ function addHighscore (score) {
     localStorage.setItem('highscore', JSON.stringify(highscores));
 
     var highScoreList = document.querySelector('#highscore-list');
-    highScoreList.innerHTML = ' '; 
+    highScoreList.textContent = ' ';
 
     for (var i = 0; i < highscores.length; i++) {
-      var scoreItem = document.createElement('li');
-      scoreItem.textContent = highscores[i].score;
-      highScoreList.appendChild(scoreItem);
+        var scoreItem = document.createElement('li');
+        scoreItem.textContent = highscores[i].score;
+        highScoreList.appendChild(scoreItem);
     };
     highscoreEl.classList.remove('hidden');
 };
