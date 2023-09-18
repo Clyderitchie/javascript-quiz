@@ -111,6 +111,7 @@ function showQuestion() {
 //     })
 // }
 
+
 // Sets displays to block or none depending on users actions
 function displayEvent() {
     if (questionContainerEl.classList[0] === 'hidden') {

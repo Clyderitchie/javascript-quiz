@@ -1,27 +1,72 @@
-/* Main body secetion */
+/* Root var Section */
+:root {
+    --title-font-size: 42px;
+    --font-weight: bold;
+    --wire-frame-red: 1px solid red;
+    --wire-frame-blue: 1px dashed blue;
+    --bg-color-dark: rgb(162, 162, 162);
+    --font-color-light: white;  
+}
+/* Parent secetion */
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
     height: 100vh;
     font-size: 24px;
-    
+    border: var(--wire-frame-red);
+}
+
+h1, h3 {
+    font-size: var(--title-font-size);
+}
+
+/* Header Section */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 45%;
+}
+
+#title-container {
+    text-align: center;
+    padding: 0 4%;
+    flex-basis: 50%;
+    border: var(--wire-frame-blue);
+}
+
+#timer-left {
+    flex-basis: 15%;
+    border: var(--wire-frame-blue)
+}
+
+#highscore {
+    text-align: center;
+    flex-basis: 15%;
+    border: var(--wire-frame-blue)
 }
 
 /* Start screen secetion */
 #start-screen {
-    border: 1px dashed blue;
     text-align: center;
+    flex-basis: 50%;
+    border: var(--wire-frame-blue);
+}
+
+#rule-container {
+    list-style-type: none;
 }
 
 /* question container section */
 #question-container {
     text-align: center;
-    border: 1px solid blue;
+    flex-basis: 75%;
+    border: var(--wire-frame-blue);
 }
 
-#question-container button{
+#question-container button {
     display: block;
     font-size: 22px;
     margin: 1px 0;
@@ -31,29 +76,11 @@ main {
     display: none;
 }
 
-/* Timer styling */
-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    height: 75px;
-}
-
-header div {
-    padding: 0 4%;
-}
-
-
 #content-container {
-    flex-basis: 25%;
-    padding-bottom: 10.2%;
-    border: 1px dashed blue;
-}
-
-/* Highscore secetion */
-#highscore {
-    border: 1px sloid blue;
-    text-align: center;
-    flex-basis: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 75%;
+    padding-bottom: 1%;
+    border: var(--wire-frame-blue)
 }

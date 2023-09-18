@@ -11,26 +11,29 @@
 <body>
     <header>
         <div id="timer-left"></div>
-        <h1>Javascript Quiz</h1>
+        <div id="title-container">
+            <h1>Javascript Quiz</h1>
+            <p>
+                Welcome to the Javascript test. Test your knowledge of the language against others and see your position
+                on the leader board.
+            </p>
+        </div>
+        <div id="highscore">
+            <h2>Top 5 scores</h2>
+            <ol id="highscore-list"></ol>
+        </div>
     </header>
     <main>
         <div id="start-screen">
-            <h1>Welcome</h1>
-            <p>
-                Welcome to the Javascript test. Test your knowledge of the language against others and see your position on the leader board.
-            </p>
-            <p>
-                Rules: Each question you get right is worth one position.
-                Any question you get wrong the timer will lose 15 seconds.
-                You have a total of 60 seconds to get all five questions right.
-            </p>
+            <h3>Welcome</h3>
+            <ul id="rule-container"> Rules
+                <li>Each question you get right is worth one position.</li>
+                <li>Any question you get wrong the timer will lose 15 seconds.</li>
+                <li>You have a total of 60 seconds to get all five questions right.</li>
+            </ul>
             <button id="start-btn">Start</button>
         </div>
         <div id="content-container">
-            <div id="highscore">
-                <h2>Top 5 scores</h2>
-                <ol id="highscore-list"></ol>
-            </div>
             <div id="question-container" class="hidden"></div>
         </div>
     </main>
