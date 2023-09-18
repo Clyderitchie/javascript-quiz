@@ -32,9 +32,12 @@ header {
 
 #title-container {
     text-align: center;
-    padding: 0 4%;
     flex-basis: 50%;
     border: var(--wire-frame-blue);
+}
+
+#title-container p {
+    font-size: 26px;
 }
 
 #timer-left {
@@ -62,14 +65,15 @@ header {
 /* question container section */
 #question-container {
     text-align: center;
-    flex-basis: 75%;
+    flex-basis: 100%;
+    font-size: 30px;
     border: var(--wire-frame-blue);
 }
 
 #question-container button {
     display: block;
-    font-size: 22px;
-    margin: 1px 0;
+    font-size: 24px;
+    margin: 5px 10px;
 }
 
 .hidden {
