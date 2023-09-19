@@ -56,8 +56,7 @@ restartBtnEl.addEventListener('click', function () {
     currentQuestionIndex = 0;
     score = 0;
     timeleft = 60;
-    showQuestion();
-    timer();
+    timeEl.textContent = '';
     displayEvent();
     restartBtnEl.classList.add('hidden');
   });
@@ -69,7 +68,7 @@ function timer() {
         timeleft--;
         timeEl.textContent = timeleft;
         if (timeleft <= 0) {
-            clearInterval(intervalId);
+            endQuiz();
         }
     }, 1000);
 
@@ -91,7 +90,7 @@ function showQuestion() {
             }
             currentQuestionIndex++;
             if (currentQuestionIndex === questions.length) {
-                addHighscore();
+                endQuiz();
             } else {
                 showQuestion();
             }
@@ -105,11 +104,12 @@ function displayEvent() {
     if (questionContainerEl.classList[0] === 'hidden') {
         questionContainerEl.classList.remove('hidden');
         startScreenEl.classList.add('hidden');
+        restartBtnEl.classList.add('hidden');
     } else {
         questionContainerEl.classList.add('hidden');
         startScreenEl.classList.remove('hidden');
     }
-};
+};           
 
 // Function for highscore list and users name 
 function addHighscore() {
@@ -136,5 +136,11 @@ function addHighscore() {
         highScoreList.appendChild(scoreItem);
       }
     }
-    restartBtnEl.classList.remove('hidden');
   }
+
+// function for when quiz ends
+function endQuiz () {
+    clearInterval(intervalId);
+    addHighscore();
+    restartBtnEl.classList.remove('hidden');
+}
